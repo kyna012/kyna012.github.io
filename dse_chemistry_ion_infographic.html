@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSE Chemistry: The Colourful Cast of Ions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f0fdf4;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .ion-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .ion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        sup, sub {
+            font-size: 0.75em;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline;
+        }
+        sup { top: -0.5em; }
+        sub { bottom: -0.25em; }
+    </style>
+</head>
+<body class="p-4 md:p-8 text-gray-800">
+
+    <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-indigo-500">
+        
+        <!-- Header -->
+        <header class="bg-indigo-600 text-white p-8 text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="w-full h-full">
+                    <path d="M0,50 Q25,25 50,50 T100,50 L100,100 L0,100 Z" fill="white"></path>
+                </svg>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black mb-2 tracking-tight relative z-10">🧪 The Colourful Cast of Ions!</h1>
+            <p class="text-xl md:text-2xl font-bold opacity-90 relative z-10">DSE Chemistry Ultimate Cheat Sheet</p>
+            <p class="mt-4 text-indigo-100 max-w-2xl mx-auto relative z-10">Memorize these funky groups and their nicknames to crush your qualitative analysis questions!</p>
+        </header>
+
+        <div class="p-6 md:p-10">
+            
+            <!-- Section 1: The Coloured VIPs -->
+            <h2 class="text-3xl font-bold text-center mb-8 text-indigo-800 border-b-4 border-indigo-200 inline-block mx-auto pb-2">🎨 The Coloured VIPs (Transition Metals)</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                
+                <!-- Group 1: The Matcha Monsters -->
+                <div class="ion-card bg-green-50 rounded-2xl p-6 border-t-8 border-green-500 shadow-lg">
+                    <div class="text-4xl mb-2 text-center">🍵</div>
+                    <h3 class="text-xl font-bold text-green-700 text-center mb-4">The Matcha Monsters</h3>
+                    <ul class="space-y-3">
+                        <li class="bg-white p-3 rounded-xl shadow-sm border border-green-100 flex justify-between items-center">
+                            <span class="font-bold">Iron(II)</span>
+                            <span class="text-green-600 font-bold bg-green-100 px-2 py-1 rounded">Fe<sup>2+</sup></span>
+                        </li>
+                        <li class="text-center text-sm font-bold text-green-600 bg-green-100 rounded-md py-1">Pale Green</li>
+                        
+                        <li class="bg-white p-3 rounded-xl shadow-sm border border-green-100 flex justify-between items-center mt-3">
+                            <span class="font-bold">Chromium(III)</span>
+                            <span class="text-green-600 font-bold bg-green-100 px-2 py-1 rounded">Cr<sup>3+</sup></span>
+                        </li>
+                        <li class="bg-white p-3 rounded-xl shadow-sm border border-green-100 flex justify-between items-center mt-2">
+                            <span class="font-bold">Nickel(II)</span>
+                            <span class="text-green-600 font-bold bg-green-100 px-2 py-1 rounded">Ni<sup>2+</sup></span>
+                        </li>
+                        <li class="text-center text-sm font-bold text-green-700 bg-green-200 rounded-md py-1">Green</li>
+                    </ul>
+                </div>
+
+                <!-- Group 2: The Citrus Sunrise -->
+                <div class="ion-card bg-orange-50 rounded-2xl p-6 border-t-8 border-orange-500 shadow-lg">
+                    <div class="text-4xl mb-2 text-center">🌅</div>
+                    <h3 class="text-xl font-bold text-orange-700 text-center mb-4">The Citrus Sunrise</h3>
+                    <ul class="space-y-3">
+                        <li class="bg-white p-3 rounded-xl shadow-sm border border-yellow-200 flex justify-between items-center">
+                            <span class="font-bold">Iron(III)</span>
+                            <span class="text-yellow-600 font-bold bg-yellow-100 px-2 py-1 rounded">Fe<sup>3+</sup></span>
+                        </li>
+                        <li class="bg-white p-3 rounded-xl shadow-sm border border-yellow-200 flex justify-between items-center">
+                            <span class="font-bold">Chromate</span>
+                            <span class="text-yellow-600 font-bold bg-yellow-100 px-2 py-1 rounded">CrO<sub>4</sub><sup>2-</sup></span>
+                        </li>
+                        <li class="text-center text-sm font-bold text-yellow-700 bg-yellow-200 rounded-md py-1">Yellow</li>
+                        
+                        <li class="bg-white p-3 rounded-xl shadow-sm border border-orange-200 flex justify-between items-center mt-3">
+                            <span class="font-bold">Dichromate</span>
+                            <span class="text-orange-600 font-bold bg-orange-100 px-2 py-1 rounded">Cr<sub>2</sub>O<sub>7</sub><sup>2-</sup></span>
+                        </li>
+                        <li class="text-center text-sm font-bold text-orange-700 bg-orange-200 rounded-md py-1">Orange</li>
+                    </ul>
+                </div>
+
+                <!-- Group 3: The Barbie & Barney Club -->
+                <div class="ion-card bg-pink-50 rounded-2xl p-6 border-t-8 border-pink-500 shadow-lg">
+                    <div class="text-4xl mb-2 text-center">🎀</div>
+                    <h3 class="text-xl font-bold text-pink-700 text-center mb-4">Barbie & Barney</h3>
+                    <ul class="space-y-3">
+                        <li class="bg-white p-3 rounded-xl shadow-sm border border-pink-200 flex justify-between items-center">
+                            <span class="font-bold">Cobalt(II)</span>
+                            <span class="text-pink-600 font-bold bg-pink-100 px-2 py-1 rounded">Co<sup>2+</sup></span>
+                        </li>
+                        <li class="text-center text-sm font-bold text-pink-600 bg-pink-100 rounded-md py-1">Pink</li>
+
+                        <li class="bg-white p-3 rounded-xl shadow-sm border border-pink-100 flex justify-between items-center mt-3">
+                            <span class="font-bold text-sm">Manganese(II)</span>
+                            <span class="text-pink-400 font-bold bg-pink-50 px-2 py-1 rounded">Mn<sup>2+</sup></span>
+                        </li>
+                        <li class="text-center text-xs font-bold text-pink-500 bg-pink-50 rounded-md py-1">Very Pale Pink / Colourless</li>
+                        
+                        <li class="bg-white p-3 rounded-xl shadow-sm border border-purple-200 flex justify-between items-center mt-3">
+                            <span class="font-bold">Permanganate</span>
+                            <span class="text-purple-600 font-bold bg-purple-100 px-2 py-1 rounded">MnO<sub>4</sub><sup>-</sup></span>
+                        </li>
+                        <li class="text-center text-sm font-bold text-purple-700 bg-purple-200 rounded-md py-1">Purple</li>
+                    </ul>
+                </div>
+
+                <!-- Group 4: The Lonely Smurf -->
+                <div class="ion-card bg-blue-50 rounded-2xl p-6 border-t-8 border-blue-500 shadow-lg">
+                    <div class="text-4xl mb-2 text-center">💧</div>
+                    <h3 class="text-xl font-bold text-blue-700 text-center mb-4">The Lonely Smurf</h3>
+                    <div class="h-full flex flex-col justify-center pb-8">
+                        <ul class="space-y-3">
+                            <li class="bg-white p-4 rounded-xl shadow-md border-2 border-blue-200 flex flex-col items-center justify-center gap-2 transform scale-110">
+                                <span class="font-bold text-lg">Copper(II)</span>
+                                <span class="text-blue-700 font-black text-2xl bg-blue-100 px-4 py-2 rounded-lg">Cu<sup>2+</sup></span>
+                            </li>
+                            <li class="text-center text-md font-bold text-blue-700 bg-blue-200 rounded-md py-2 mt-4 transform scale-110">Blue</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Section 2: The Ghost Squad -->
+            <div class="bg-gray-100 rounded-3xl p-8 mb-12 shadow-inner border-2 border-gray-200">
+                <div class="text-center mb-6">
+                    <h2 class="text-3xl font-bold text-gray-700 inline-block">👻 The Ghost Squad (Colourless)</h2>
+                    <p class="text-gray-500 mt-2 font-semibold">If it's not a transition metal (or if it's Copper(I)), it's probably hanging out here.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Cations -->
+                    <div class="bg-white rounded-2xl p-6 shadow-md">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 border-b-2 border-gray-200 pb-2">➕ The Positive Phantoms (Cations)</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Aluminium</span><span class="font-bold text-gray-800">Al<sup>3+</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Potassium</span><span class="font-bold text-gray-800">K<sup>+</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Barium</span><span class="font-bold text-gray-800">Ba<sup>2+</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Magnesium</span><span class="font-bold text-gray-800">Mg<sup>2+</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Zinc</span><span class="font-bold text-gray-800">Zn<sup>2+</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Lead(II)</span><span class="font-bold text-gray-800">Pb<sup>2+</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Silver</span><span class="font-bold text-gray-800">Ag<sup>+</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Ammonium</span><span class="font-bold text-gray-800">NH<sub>4</sub><sup>+</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Hydrogen</span><span class="font-bold text-gray-800">H<sup>+</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Mercury(I)</span><span class="font-bold text-gray-800">Hg<sup>+</sup></span></div>
+                            <div class="bg-blue-50 p-2 rounded text-center border border-blue-200"><span class="block text-xs text-blue-600 font-bold">Copper(I) *</span><span class="font-bold text-blue-800">Cu<sup>+</sup></span></div>
+                        </div>
+                    </div>
+
+                    <!-- Anions -->
+                    <div class="bg-white rounded-2xl p-6 shadow-md">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 border-b-2 border-gray-200 pb-2">➖ The Negative Ninjas (Anions)</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Chloride</span><span class="font-bold text-gray-800">Cl<sup>-</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Bromide</span><span class="font-bold text-gray-800">Br<sup>-</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Iodide</span><span class="font-bold text-gray-800">I<sup>-</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Hydroxide</span><span class="font-bold text-gray-800">OH<sup>-</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Nitrate</span><span class="font-bold text-gray-800">NO<sub>3</sub><sup>-</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Nitrite</span><span class="font-bold text-gray-800">NO<sub>2</sub><sup>-</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Nitride</span><span class="font-bold text-gray-800">N<sup>3-</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Sulphate</span><span class="font-bold text-gray-800">SO<sub>4</sub><sup>2-</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Sulphite</span><span class="font-bold text-gray-800">SO<sub>3</sub><sup>2-</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Sulphide</span><span class="font-bold text-gray-800">S<sup>2-</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">H-sulphate</span><span class="font-bold text-gray-800">HSO<sub>4</sub><sup>-</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Carbonate</span><span class="font-bold text-gray-800">CO<sub>3</sub><sup>2-</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">H-carbonate</span><span class="font-bold text-gray-800">HCO<sub>3</sub><sup>-</sup></span></div>
+                            <div class="bg-gray-50 p-2 rounded text-center border border-gray-200"><span class="block text-xs text-gray-500">Phosphate</span><span class="font-bold text-gray-800">PO<sub>4</sub><sup>3-</sup></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Compound Mixology -->
+            <h2 class="text-3xl font-bold text-center mb-8 text-indigo-800 border-b-4 border-indigo-200 inline-block mx-auto pb-2">🧪 Mix & Match Magic (Aqueous Solutions)</h2>
+            <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">When ions combine in water, the colourful ion determines the solution's colour! If both are colourless, the solution is colourless. Check out these examples from your worksheet.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                
+                <!-- Pale Green -->
+                <div class="bg-white border-2 border-green-200 rounded-xl p-4 text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-green-200 rounded-full mx-auto mb-3 flex items-center justify-center border-4 border-white shadow">
+                        <span class="text-green-700 font-bold drop-shadow-sm">🧪</span>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-700 h-10 flex items-center justify-center">Iron(II) chloride</h4>
+                    <p class="text-xs text-green-700 font-bold bg-green-50 rounded mt-2 py-1 border border-green-100">Pale green</p>
+                </div>
+
+                <!-- Blue -->
+                <div class="bg-white border-2 border-blue-200 rounded-xl p-4 text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-500 rounded-full mx-auto mb-3 flex items-center justify-center border-4 border-white shadow">
+                        <span class="text-white font-bold drop-shadow-sm">🧪</span>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-700 h-10 flex items-center justify-center">Copper(II) sulphate</h4>
+                    <p class="text-xs text-blue-700 font-bold bg-blue-50 rounded mt-2 py-1 border border-blue-100">Blue</p>
+                </div>
+
+                <!-- Pink -->
+                <div class="bg-white border-2 border-pink-200 rounded-xl p-4 text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-pink-400 rounded-full mx-auto mb-3 flex items-center justify-center border-4 border-white shadow">
+                        <span class="text-white font-bold drop-shadow-sm">🧪</span>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-700 h-10 flex items-center justify-center">Cobalt(II) chloride</h4>
+                    <p class="text-xs text-pink-700 font-bold bg-pink-50 rounded mt-2 py-1 border border-pink-100">Pink</p>
+                </div>
+
+                <!-- Orange -->
+                <div class="bg-white border-2 border-orange-200 rounded-xl p-4 text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-orange-500 rounded-full mx-auto mb-3 flex items-center justify-center border-4 border-white shadow">
+                        <span class="text-white font-bold drop-shadow-sm">🧪</span>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-700 h-10 flex items-center justify-center">Potassium dichromate</h4>
+                    <p class="text-xs text-orange-700 font-bold bg-orange-50 rounded mt-2 py-1 border border-orange-100">Orange</p>
+                </div>
+
+                <!-- Purple -->
+                <div class="bg-white border-2 border-purple-200 rounded-xl p-4 text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-purple-600 rounded-full mx-auto mb-3 flex items-center justify-center border-4 border-white shadow">
+                        <span class="text-white font-bold drop-shadow-sm">🧪</span>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-700 h-10 flex items-center justify-center">Potassium permanganate</h4>
+                    <p class="text-xs text-purple-700 font-bold bg-purple-50 rounded mt-2 py-1 border border-purple-100">Purple</p>
+                </div>
+
+                <!-- Yellow -->
+                <div class="bg-white border-2 border-yellow-200 rounded-xl p-4 text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-yellow-400 rounded-full mx-auto mb-3 flex items-center justify-center border-4 border-white shadow">
+                        <span class="text-white font-bold drop-shadow-sm">🧪</span>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-700 h-10 flex items-center justify-center">Iron(III) nitrate</h4>
+                    <p class="text-xs text-yellow-700 font-bold bg-yellow-50 rounded mt-2 py-1 border border-yellow-100">Yellow</p>
+                </div>
+
+                <!-- Green -->
+                <div class="bg-white border-2 border-green-300 rounded-xl p-4 text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-green-500 rounded-full mx-auto mb-3 flex items-center justify-center border-4 border-white shadow">
+                        <span class="text-white font-bold drop-shadow-sm">🧪</span>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-700 h-10 flex items-center justify-center">Chromium(III) nitrate</h4>
+                    <p class="text-xs text-green-800 font-bold bg-green-50 rounded mt-2 py-1 border border-green-200">Green</p>
+                </div>
+
+                <!-- Colourless 1 -->
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-4 text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-gray-100 rounded-full mx-auto mb-3 flex items-center justify-center border-4 border-gray-300 shadow">
+                        <span class="text-gray-400 font-bold drop-shadow-sm">💧</span>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-700 h-10 flex items-center justify-center">Sodium chloride</h4>
+                    <p class="text-xs text-gray-500 font-bold bg-gray-50 rounded mt-2 py-1 border border-gray-200">Colourless</p>
+                </div>
+
+                <!-- Colourless 2 -->
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-4 text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-gray-100 rounded-full mx-auto mb-3 flex items-center justify-center border-4 border-gray-300 shadow">
+                        <span class="text-gray-400 font-bold drop-shadow-sm">💧</span>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-700 h-10 flex items-center justify-center">Potassium hydroxide</h4>
+                    <p class="text-xs text-gray-500 font-bold bg-gray-50 rounded mt-2 py-1 border border-gray-200">Colourless</p>
+                </div>
+
+                <!-- Colourless 3 -->
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-4 text-center shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-gray-100 rounded-full mx-auto mb-3 flex items-center justify-center border-4 border-gray-300 shadow">
+                        <span class="text-gray-400 font-bold drop-shadow-sm">💧</span>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-700 h-10 flex items-center justify-center mt-2 leading-tight">Magnesium<br>hydrogencarbonate</h4>
+                    <p class="text-xs text-gray-500 font-bold bg-gray-50 rounded mt-2 py-1 border border-gray-200">Colourless</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-indigo-900 text-indigo-200 text-center py-6 px-4">
+            <p class="font-bold">📚 DSE Chemistry Survival Guide 📚</p>
+            <p class="text-sm mt-2">Remember: Copper(I) is colourless, but Copper(II) is blue! Watch out for those tricky transition metal oxidation states!</p>
+        </footer>
+    </div>
+
+</body>
+</html>
