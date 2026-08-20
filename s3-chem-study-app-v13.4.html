@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S3 Chemistry Mastery Simulator v13.6</title>
+    <title>S3 Chemistry Mastery Simulator v13.7</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧪</text></svg>">
     <style>
         :root {
-            --bg: #f0f2f5; --panel: #ffffff; --text: #1e293b;
-            --accent: #00d2ff; --accent-hover: #0099cc; --danger: #ff4d4d; 
-            --success: #4CAF50; --chat-bg: #f8fafc;
+            --bg: #1e1e2e; /* Deep, cool purple-blue */
+            --panel: #27273a; /* Elevated card color */
+            --text: #f0f0f5; /* Crisp, warm off-white */
+            --accent: #ff79c6; /* Vibrant electric pink */
+            --accent-hover: #ff92d0; 
+            --danger: #ff5555; /* Punchy red */
+            --success: #50fa7b; /* Neon mint green */
+            --chat-bg: #181825; /* Darker inset background */
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -26,7 +31,7 @@
         .column {
             background-color: var(--panel); border-radius: 12px; padding: 20px;
             display: flex; flex-direction: column; box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-            border: 1px solid #e2e8f0;
+            border: 1px solid #45475a;
             flex: 1 1 400px; /* Forces columns side-by-side on desktop, stacked on mobile */
         }
         #left-col { overflow-y: visible; }
@@ -35,7 +40,7 @@
         /* Visual Stage */
         #visual-stage {
             flex: 1; min-height: 240px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background-color: #e2e8f0; border-radius: 10px; margin-bottom: 20px; position: relative;
+            background-color: #45475a; border-radius: 10px; margin-bottom: 20px; position: relative;
             border: 1px inset #2d2d44;
         }
         #beaker {
@@ -55,10 +60,11 @@
         /* Buttons Grid */
         .controls-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
         button {
-            background-color: #e2e8f0; color: #0f172a; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; 
-            cursor: pointer; font-weight: 600; transition: all 0.2s; font-size: 12px;
+            background-color: #313244; color: var(--text); border: 1px solid #45475a; 
+            padding: 12px; border-radius: 8px; cursor: pointer; font-weight: 600; 
+            transition: all 0.2s; font-size: 12px;
         }
-        button:hover { background-color: #3d3d52; transform: translateY(-2px); }
+button:hover { background-color: #45475a; transform: translateY(-2px); }
         .btn-danger { background-color: #4a1c1c; border-color: #662222; }
         .btn-danger:hover { background-color: var(--danger); border-color: var(--danger); }
         .btn-submit { 
@@ -68,7 +74,7 @@
         .btn-submit:hover { background-color: var(--accent); color: black; box-shadow: 0 0 15px var(--accent); }
         
         /* Panels */
-        h3 { margin-top: 0; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; font-size: 14px; color: #a1a1aa; text-transform: uppercase; letter-spacing: 1px;}
+        h3 { margin-top: 0; border-bottom: 1px solid #45475a; padding-bottom: 8px; font-size: 14px; color: #a1a1aa; text-transform: uppercase; letter-spacing: 1px;}
         .panel-section { background-color: var(--chat-bg); padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #232336; }
         
         #journal { height: 130px; overflow-y: auto; font-family: 'Courier New', Courier, monospace; font-size: 12px; }
@@ -82,8 +88,8 @@
         #chat-messages {
             flex: 1; overflow-y: auto; font-size: 13px; margin-bottom: 10px; display: flex; flex-direction: column; gap: 10px;
         }
-        .chat-msg { padding: 10px 14px; border-radius: 8px; max-width: 85%; line-height: 1.4; }
-        .msg-ai { background-color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 2px; color: #e4e4e7;}
+        .msg-ai { background-color: #313244; align-self: flex-start; border-bottom-left-radius: 2px; color: var(--text);}
+        .msg-user { background-color: #cba6f7; align-self: flex-end; border-bottom-right-radius: 2px; color: #11111b;}
         .msg-user { background-color: #005c7a; align-self: flex-end; border-bottom-right-radius: 2px; color: white;}
         #chat-input-area { display: flex; gap: 8px; }
         #chat-input { flex: 1; padding: 12px; border-radius: 6px; border: 1px solid #ffffff; background: #ffffff; color: white; outline: none; }
@@ -98,23 +104,27 @@
         
         .modal-box { 
             background: var(--panel); padding: 30px; border-radius: 12px; max-width: 450px; width: 90%; 
-            border: 1px solid #e2e8f0; box-shadow: 0 15px 40px rgba(0,0,0,0.8); text-align: center;
+            border: 1px solid #45475a; box-shadow: 0 15px 40px rgba(0,0,0,0.8); text-align: center;
         }
         
-        input[type="text"] { width: 100%; padding: 12px; margin: 15px 0; border-radius: 6px; border: 1px solid #e2e8f0; background: #12121a; color: white; font-size: 16px; box-sizing: border-box; text-align: center; }
+        input[type="text"] { 
+            width: 100%; padding: 12px; margin: 15px 0; border-radius: 6px; 
+            border: 1px solid #45475a; background: #181825; color: var(--text); 
+            font-size: 16px; box-sizing: border-box; text-align: center; 
+        }
         input[type="text"]:focus { border-color: var(--accent); outline: none;}
 
         /* Welcome Instructions List Formatting */
-        .welcome-list { text-align: left; padding-left: 20px; color: #d4d4d8; font-size: 13.6px; line-height: 1.6; }
+        .welcome-list { text-align: left; padding-left: 20px; color: #d4d4d8; font-size: 13.7px; line-height: 1.6; }
         .welcome-list li { margin-bottom: 10px; }
 
         /* Dual-Panel Quiz Debrief */
         .debrief-wrapper {
-            display: flex; gap: 20px; max-width: 1000px; width: 95%; background: var(--panel); border-radius: 12px; padding: 25px; border: 1px solid #e2e8f0; max-height: 90vh; box-sizing: border-box;
+            display: flex; gap: 20px; max-width: 1000px; width: 95%; background: var(--panel); border-radius: 12px; padding: 25px; border: 1px solid #45475a; max-height: 90vh; box-sizing: border-box;
         }
-        .debrief-pane { flex: 1; display: flex; flex-direction: column; overflow-y: auto; background: var(--chat-bg); padding: 25px; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .debrief-pane { flex: 1; display: flex; flex-direction: column; overflow-y: auto; background: var(--chat-bg); padding: 25px; border-radius: 8px; border: 1px solid #45475a; }
         
-        .quiz-item { margin-bottom: 25px; background: #1a1a24; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;}
+        .quiz-item { margin-bottom: 25px; background: #1a1a24; padding: 15px; border-radius: 8px; border: 1px solid #45475a;}
         .quiz-item p { margin: 0 0 10px 0; font-weight: 600; font-size: 14px; color: var(--accent); }
         .quiz-option { display: block; margin-bottom: 8px; font-size: 13px; color: #d4d4d8; cursor: pointer; }
         .quiz-option input { margin-right: 10px; }
@@ -123,7 +133,7 @@
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb { background: #45475a; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
         /* --- Scrolling & Responsive Layout for iPad and Mobile --- */
         @media (max-width: 1024px) {
@@ -180,7 +190,7 @@
         /* --- Mobile Toast Notification --- */
         #mobile-toast {
             position: fixed; top: -150px; left: 50%; transform: translateX(-50%);
-            width: 85%; max-width: 400px; background: var(--panel); border: 1px solid #e2e8f0; border-left: 4px solid var(--accent);
+            width: 85%; max-width: 400px; background: var(--panel); border: 1px solid #45475a; border-left: 4px solid var(--accent);
             color: #e4e4e7; padding: 15px; border-radius: 8px; font-size: 13px; line-height: 1.4;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8); z-index: 1000;
             transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -188,7 +198,7 @@
         }
         #mobile-toast.show { top: 20px; }
         .toast-title { font-weight: bold; font-size: 14px; margin-bottom: 5px; display: block; }
-        .toast-tip { font-size: 11.5px; color: #94a3b8; margin-top: 10px; display: block; border-top: 1px solid #e2e8f0; padding-top: 8px;}
+        .toast-tip { font-size: 11.5px; color: #94a3b8; margin-top: 10px; display: block; border-top: 1px solid #45475a; padding-top: 8px;}
 
         /* Enable element display only on screens 768px wide or smaller */
         @media (max-width: 768px) {
@@ -200,7 +210,7 @@
     <div id="mobile-toast" onclick="this.classList.remove('show')"></div>
     <div id="welcome-modal" class="modal-overlay active">
         <div class="modal-box" style="max-width: 550px;">
-            <h2 style="margin-top: 0; color: var(--accent); letter-spacing: 1px;">LAB BRIEFING: v13.6</h2>
+            <h2 style="margin-top: 0; color: var(--accent); letter-spacing: 1px;">LAB BRIEFING: v13.7</h2>
             <p style="color: #a1a1aa; font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
                 Welcome to the Chemistry Mastery Simulator. You are tasked with assessing 10 mystery batches strictly based on your S3 curriculum. Follow these operating protocols:
             </p>
@@ -279,7 +289,7 @@
             <p id="submission-error" style="color: var(--danger); font-size: 13px; margin-bottom: 15px; display: none;"></p>
             <div style="display: flex; gap: 10px;">
                 <button onclick="checkSubmission()" style="flex: 1; background: var(--accent); color: black;">Submit</button>
-                <button onclick="closeSubmitModal()" style="flex: 1; background: transparent; border: 1px solid #e2e8f0;">Cancel</button>
+                <button onclick="closeSubmitModal()" style="flex: 1; background: transparent; border: 1px solid #45475a;">Cancel</button>
             </div>
         </div>
     </div>
@@ -296,7 +306,7 @@
                     <p id="debrief-fact" style="margin: 8px 0 0 0; font-size: 14px; line-height: 1.5; color: #e4e4e7;"></p>
                 </div>
                 
-                <div style="background: #e2e8f0; padding: 15px; border-left: 4px solid #ffb74d; border-radius: 4px;">
+                <div style="background: #45475a; padding: 15px; border-left: 4px solid #ffb74d; border-radius: 4px;">
                     <b style="color: #ffb74d; font-size: 13px; text-transform: uppercase;">📚 Syllabus Parallels:</b>
                     <p id="debrief-parallels" style="margin: 8px 0 0 0; font-size: 13px; line-height: 1.5; color: #a1a1aa;"></p>
                 </div>
