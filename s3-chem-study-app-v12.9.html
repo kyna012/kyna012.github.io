@@ -555,9 +555,16 @@
             visual.style.borderColor = stateObj.color;
         }
 
+        // --- Custom Toast Notification System ---
         let toastTimer;
+        
         function showToast(text, isError) {
             const toast = document.getElementById('mobile-toast');
+            if (!toast) {
+                console.error("The toast HTML container is missing!");
+                return; 
+            }
+            
             const titleColor = isError ? "var(--danger)" : "var(--accent)";
             toast.style.borderLeftColor = isError ? "var(--danger)" : "var(--accent)";
             
@@ -569,7 +576,7 @@
             
             toast.classList.add('show');
             clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => toast.classList.remove('show'), 5000); // Auto-hides after 5 seconds
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 5000);
         }
 
         function logJournal(text, isError) {
@@ -579,7 +586,7 @@
             journalDiv.prepend(entry);
             journalDiv.scrollTop = 0;
 
-            // Triggering for ALL screens during testing
+            // Trigger the toast notification
             showToast(text, isError);
         }
 
