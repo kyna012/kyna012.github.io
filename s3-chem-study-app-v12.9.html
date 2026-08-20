@@ -11,6 +11,7 @@
             --success: #4CAF50; --chat-bg: #12121a;
         }
         body {
+            <div id="mobile-toast" onclick="this.classList.remove('show')"></div>
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg); color: var(--text);
             margin: 0; padding: 20px; min-height: 100vh; min-height: 100dvh; box-sizing: border-box; 
@@ -175,6 +176,22 @@
                 margin-top: 15px !important; 
             }
         }
+        /* --- Mobile Toast Notification --- */
+        #mobile-toast {
+            position: fixed; top: -150px; left: 50%; transform: translateX(-50%);
+            width: 85%; background: var(--panel); border: 1px solid #3f3f5a; border-left: 4px solid var(--accent);
+            color: #e4e4e7; padding: 15px; border-radius: 8px; font-size: 13px; line-height: 1.4;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8); z-index: 1000;
+            transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: left; cursor: pointer; display: none;
+        }
+        #mobile-toast.show { top: 20px; }
+        .toast-title { font-weight: bold; font-size: 14px; margin-bottom: 5px; display: block; }
+        .toast-tip { font-size: 11.5px; color: #94a3b8; margin-top: 10px; display: block; border-top: 1px solid #2a2a35; padding-top: 8px;}
+        
+        /* Only allow the toast to exist on mobile */
+        @media (max-width: 768px) {
+            #mobile-toast { display: block; }
         }
     </style>
 </head>
@@ -543,6 +560,23 @@
             visual.style.borderColor = stateObj.color;
         }
 
+        let toastTimer;
+        function showToast(text, isError) {
+            const toast = document.getElementById('mobile-toast');
+            const titleColor = isError ? "var(--danger)" : "var(--accent)";
+            toast.style.borderLeftColor = isError ? "var(--danger)" : "var(--accent)";
+            
+            toast.innerHTML = `
+                <span class="toast-title" style="color: ${titleColor}">${isError ? '⚠️ Lab Hazard' : '🔬 Observation'}</span>
+                <span>${text}</span>
+                <span class="toast-tip">💡 Tip: Scroll down to the Analytical Journal for your past logs. (Tap to dismiss)</span>
+            `;
+            
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 5000); // Auto-hides after 5 seconds
+        }
+
         function logJournal(text, isError) {
             const entry = document.createElement('div');
             entry.className = `journal-entry ${isError ? 'journal-error' : ''}`;
@@ -550,9 +584,9 @@
             journalDiv.prepend(entry);
             journalDiv.scrollTop = 0;
 
-            // Display styled custom game modal on mobile screens instead of browser alerts
+            // Trigger the non-blocking toast exclusively on mobile screens
             if (window.innerWidth <= 768) {
-                showNotification(isError ? "⚠️ Lab Hazard" : "🔬 Analytical Journal", text);
+                showToast(text, isError);
             }
         }
 
