@@ -160,10 +160,21 @@
             }
         }
         /* --- Mobile-Specific Visual Tweaks --- */
-        @media (max-width: 600px) {
-            #visual-stage { min-height: 180px; margin-bottom: 15px; }
-            #beaker { width: 90px; height: 110px; }
-            #appearance-text { font-size: 14px; margin-top: 12px; }
+        @media (max-width: 768px) {
+            #visual-stage { 
+                min-height: auto !important; /* Removes the rigid height constraint */
+                padding: 40px 20px 20px 20px !important; /* Forces the box to expand comfortably around the contents */
+                margin-bottom: 15px !important; 
+            }
+            #beaker { 
+                width: 75px !important; /* Scaled down further for portrait screens */
+                height: 95px !important; 
+            }
+            #appearance-text { 
+                font-size: 13px !important; 
+                margin-top: 15px !important; 
+            }
+        }
         }
     </style>
 </head>
