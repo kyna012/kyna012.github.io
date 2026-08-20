@@ -550,9 +550,9 @@
             journalDiv.prepend(entry);
             journalDiv.scrollTop = 0;
 
-            // Trigger a pop-up alert exclusively on mobile screens (768px or narrower)
+            // Display styled custom game modal on mobile screens instead of browser alerts
             if (window.innerWidth <= 768) {
-                alert(text);
+                showNotification(isError ? "⚠️ Lab Hazard" : "🔬 Analytical Journal", text);
             }
         }
 
