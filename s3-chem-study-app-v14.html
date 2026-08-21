@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S3 Chemistry Mastery Simulator v14.2</title>
+    <title>S3 Chemistry Mastery Simulator v14.3</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧪</text></svg>">
     <style>
         :root {
@@ -243,7 +243,7 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
     <div id="mobile-toast" onclick="this.classList.remove('show')"></div>
     <div id="welcome-modal" class="modal-overlay active">
         <div class="modal-box" style="max-width: 550px;">
-            <h2 style="margin-top: 0; color: var(--accent); letter-spacing: 1px;">LAB BRIEFING: v14.2</h2>
+            <h2 style="margin-top: 0; color: var(--accent); letter-spacing: 1px;">LAB BRIEFING: v14.3</h2>
             <p style="color: #a1a1aa; font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
                 Welcome to the Chemistry Mastery Simulator. You are tasked with assessing 10 mystery batches strictly based on your S3 curriculum. Follow these operating protocols:
             </p>
@@ -831,6 +831,52 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
                 console.error("Gemini API Error:", error);
                 appendChatMessage("AI Assistant", "Network error while connecting to the assistant.");
             }
+        }
+
+        function generateSocraticHint(substance) {
+            // 1. Safeguard against missing substance or empty selection
+            if (!substance) {
+                return "💡 Please select a test tube or container first to get a hint!";
+            }
+        
+            const logs = actionHistory || [];
+        
+            // Safely retrieve properties with fallbacks so they never output 'undefined'
+            const name = substance.name || "Unknown Substance";
+            const formula = substance.trueFormula ? `(${substance.trueFormula})` : "";
+            const primaryHint = substance.hint || substance.fact || "No specific hint available for this substance yet.";
+            const flameColor = substance.flameColor || null;
+            const extraction = substance.extractionMethod || 'none';
+        
+            // Track user tests
+            const triedHeat = logs.some(act => act.includes("heat") || act.includes("carbon"));
+            const triedElectrolysis = logs.some(act => act.includes("electrolysis"));
+            const triedFlame = logs.some(act => act.includes("flame"));
+        
+            // --- Dynamic Hint Decision Logic ---
+        
+            // Case A: Substance needs Electrolysis (e.g. Bauxite)
+            if (extraction === 'electrolysis') {
+                if (!triedHeat && !triedElectrolysis) {
+                    return "💡 **Step 1:** Try heating this ore in air or with carbon first to test its reactivity.";
+                }
+                if (triedHeat && !triedElectrolysis) {
+                    return "💡 **Observation:** Heating with carbon had no effect! This means the metal is high on the **reactivity series**. Try **electrolysis** on its molten ore next.";
+                }
+            }
+        
+            // Case B: Requires Flame Test
+            if (flameColor && (triedElectrolysis || triedHeat) && !triedFlame) {
+                return "💡 **Progress!** You've processed the ore. Now run a **flame test** on the sample to identify the specific metal ion.";
+            }
+        
+            // Case C: Final Clue / Direct Hint Fallback
+            if (triedFlame || (triedHeat && extraction !== 'electrolysis')) {
+                return `💡 **Final Clue:** This sample is **${name}** ${formula}. ${flameColor ? `It gives off a characteristic ${flameColor} flame.` : ''}`;
+            }
+        
+            // Universal Fallback: Always returns a valid string using database hint/fact
+            return `💡 **Hint:** ${primaryHint}`;
         }
         
         // Opens, populates, and closes the Card Library modal
