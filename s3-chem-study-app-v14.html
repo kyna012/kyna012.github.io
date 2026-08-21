@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S3 Chemistry Mastery Simulator v14.0</title>
+    <title>S3 Chemistry Mastery Simulator v14.1</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧪</text></svg>">
     <style>
         :root {
@@ -243,7 +243,7 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
     <div id="mobile-toast" onclick="this.classList.remove('show')"></div>
     <div id="welcome-modal" class="modal-overlay active">
         <div class="modal-box" style="max-width: 550px;">
-            <h2 style="margin-top: 0; color: var(--accent); letter-spacing: 1px;">LAB BRIEFING: v14.0</h2>
+            <h2 style="margin-top: 0; color: var(--accent); letter-spacing: 1px;">LAB BRIEFING: v14.1</h2>
             <p style="color: #a1a1aa; font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
                 Welcome to the Chemistry Mastery Simulator. You are tasked with assessing 10 mystery batches strictly based on your S3 curriculum. Follow these operating protocols:
             </p>
@@ -1204,9 +1204,8 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
             }, 500);
         }
 
-        // --- Custom Toast Notification System ---
         let toastTimer;
-        
+
         function showToast(text, isError) {
             const toast = document.getElementById('mobile-toast');
             if (!toast) {
@@ -1223,9 +1222,18 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
                 <span class="toast-tip">💡 Tip: Scroll down to the Analytical Journal for your past logs. (Tap to dismiss)</span>
             `;
             
+            // 1. Remove the class to reset the position
+            toast.classList.remove('show');
+            
+            // 2. Force a DOM reflow (tells the browser to instantly apply the removal)
+            void toast.offsetWidth; 
+            
+            // 3. Add the class back to trigger the slide-down animation again
             toast.classList.add('show');
+            
+            // Clear any existing timer and set a new, faster one (e.g., 2.5 seconds)
             clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => toast.classList.remove('show'), 5000);
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
         }
 
         function logJournal(text, isError) {
