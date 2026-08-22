@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S3 Chemistry Mastery Simulator v15.4</title>
+    <title>S3 Chemistry Mastery Simulator v15.5</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧪</text></svg>">
     <style>
         :root {
@@ -243,7 +243,7 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
     <div id="mobile-toast" onclick="this.classList.remove('show')"></div>
     <div id="welcome-modal" class="modal-overlay active">
         <div class="modal-box" style="max-width: 550px;">
-            <h2 style="margin-top: 0; color: var(--accent); letter-spacing: 1px;">LAB BRIEFING: v15.4</h2>
+            <h2 style="margin-top: 0; color: var(--accent); letter-spacing: 1px;">LAB BRIEFING: v15.5</h2>
             <p style="color: #a1a1aa; font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
                 Welcome to the Chemistry Mastery Simulator. You are tasked with assessing 10 mystery batches strictly based on your S3 curriculum. Follow these operating protocols:
             </p>
@@ -849,17 +849,11 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
             `;
 
             try {
-                const response = await fetch(`https://proxy-3r6tv4j0b-chemistry-lovers.vercel.app/api/proxy`, {
+                // Replace the old fetch line with your permanent production domain:
+                const response = await fetch('https://proxy-chemistry-lovers.vercel.app/api/proxy', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        system_instruction: { 
-                            parts: [{ text: systemPrompt }] 
-                        },
-                        contents: [{ 
-                            parts: [{ text: promptText }] 
-                        }]
-                    })
+                    body: JSON.stringify({ /* ... */ })
                 });
 
                 const data = await response.json();
