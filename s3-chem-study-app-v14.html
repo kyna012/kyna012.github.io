@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S3 Chemistry Mastery Simulator v14.4</title>
+    <title>S3 Chemistry Mastery Simulator v14.5</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧪</text></svg>">
     <style>
         :root {
@@ -243,7 +243,7 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
     <div id="mobile-toast" onclick="this.classList.remove('show')"></div>
     <div id="welcome-modal" class="modal-overlay active">
         <div class="modal-box" style="max-width: 550px;">
-            <h2 style="margin-top: 0; color: var(--accent); letter-spacing: 1px;">LAB BRIEFING: v14.4</h2>
+            <h2 style="margin-top: 0; color: var(--accent); letter-spacing: 1px;">LAB BRIEFING: v14.5</h2>
             <p style="color: #a1a1aa; font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
                 Welcome to the Chemistry Mastery Simulator. You are tasked with assessing 10 mystery batches strictly based on your S3 curriculum. Follow these operating protocols:
             </p>
@@ -416,23 +416,8 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
             "SO2_gas": { app: "Colorless gas", color: "rgba(200,200,100,0.1)", type: "test-tube", physState: "gas", hint: "This pungent gas is often produced when roasting sulphide ores.", transitions: {}, logs: {} },
 
             // Metals & Waste
-            "Al_molten": { app: "Molten silver metal", color: "#d1d5db", type: "crucible", physState: "liquid", hint: "Pure molten aluminium.", transitions: {}, logs: {} },
-            "Fe_solid": { app: "Dark grey metal", color: "#4b5320", type: "crucible", physState: "solid", hint: "This metal has unique magnetic properties.", transitions: { "magnet": "Fe_magnetized" }, logs: { "magnet": "The metal pieces were attracted to the magnet! (Iron confirmed)" }},
-            "Fe_magnetized": { app: "Magnetized iron", color: "#4b5320", type: "crucible", physState: "solid", transitions: {}, logs: {} },
-            
-            "Cu_solid": { app: "Reddish-brown metal", color: "#b87333", type: "crucible", physState: "solid", hint: "A shiny reddish-brown solid.", transitions: {}, logs: {} },
-            "Hg_liquid": { app: "Silvery liquid metal", color: "#c0c0c0", type: "beaker", physState: "liquid", hint: "A rare metal that is liquid at room temperature.", transitions: {}, logs: {} },
-            "Au_solid": { app: "Shiny yellow metal", color: "#ffd700", type: "crucible", physState: "solid", hint: "Highly unreactive and valuable.", transitions: {}, logs: {} },
             "Rock_waste": { app: "Waste rock/sand", color: "#8b7355", type: "beaker", physState: "solid", transitions: {}, logs: {} },
 
-            "K_molten": { app: "Molten reactive metal", color: "#b3b3c6", type: "crucible", physState: "liquid", transitions: {}, logs: {} },
-            "Na_molten": { app: "Molten silvery metal", color: "#e6e6fa", type: "crucible", physState: "liquid", transitions: {}, logs: {} },
-            "Ca_molten": { app: "Molten dull metal", color: "#dcdcdc", type: "crucible", physState: "liquid", transitions: {}, logs: {} },
-            "Mg_molten": { app: "Molten light metal", color: "#f0f8ff", type: "crucible", physState: "liquid", transitions: {}, logs: {} },
-            "Zn_solid": { app: "Bluish-white metal", color: "#bac4c8", type: "crucible", physState: "solid", transitions: {}, logs: {} },
-            "Pb_solid": { app: "Heavy grey metal", color: "#778899", type: "crucible", physState: "solid", transitions: {}, logs: {} },
-            "Ag_solid": { app: "Shiny white metal", color: "#e3e4e5", type: "crucible", physState: "solid", transitions: {}, logs: {} },
-            "Pt_solid": { app: "Dense silvery metal", color: "#e5e4e2", type: "crucible", physState: "solid", transitions: {}, logs: {} },
             // --- TOP TIER: Highly Reactive (Extract via Electrolysis) ---
             "K_molten": { 
                 app: "Silvery metal", color: "#b3b3c6", type: "crucible", physState: "pure_metal", transitions: {}, 
