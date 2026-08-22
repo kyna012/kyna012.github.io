@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S3 Chemistry Mastery Simulator v14.3</title>
+    <title>S3 Chemistry Mastery Simulator v14.4</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧪</text></svg>">
     <style>
         :root {
@@ -243,7 +243,7 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
     <div id="mobile-toast" onclick="this.classList.remove('show')"></div>
     <div id="welcome-modal" class="modal-overlay active">
         <div class="modal-box" style="max-width: 550px;">
-            <h2 style="margin-top: 0; color: var(--accent); letter-spacing: 1px;">LAB BRIEFING: v14.3</h2>
+            <h2 style="margin-top: 0; color: var(--accent); letter-spacing: 1px;">LAB BRIEFING: v14.4</h2>
             <p style="color: #a1a1aa; font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
                 Welcome to the Chemistry Mastery Simulator. You are tasked with assessing 10 mystery batches strictly based on your S3 curriculum. Follow these operating protocols:
             </p>
@@ -557,6 +557,23 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
                     test_oxygen: "No reaction. It stays shiny even when heated."
                 } 
             },
+            "Cl2_gas": { 
+                app: "Pale green gas", 
+                color: "rgba(144,238,144,0.15)", 
+                type: "test-tube", 
+                physState: "gas", 
+                hint: "This pungent, pale green gas can be tested using damp blue litmus paper.", 
+                transitions: { "litmus_paper": "Cl2_tested" }, 
+                logs: { "litmus_paper": "Inserted damp blue litmus paper. It turned red, then bleached completely white! (Chlorine confirmed)" }
+            },
+            "Cl2_tested": { 
+                app: "Bleached gas", 
+                color: "rgba(144,238,144,0.05)", 
+                type: "test-tube", 
+                physState: "gas", 
+                transitions: {}, 
+                logs: {} 
+            },
         };
 
         const toolConfig = {
@@ -572,7 +589,8 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
             ],
             "gas": [
                 { id: "splint_glowing", label: "🪵 Glowing Splint", class: "" },
-                { id: "limewater", label: "💧 Limewater Test", class: "" }
+                { id: "limewater", label: "💧 Limewater Test", class: "" },
+                { id: "litmus_paper", label: "📄 Damp Blue Litmus", class: "" }
             ],
             // NEW CATEGORY: Only appears for extracted pure metals
             "pure_metal": [
@@ -601,7 +619,7 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
                         app: "White/grey rocky ore", color: "#cccccc", type: "beaker", physState: "solid", 
                         hint: "This metal is very reactive. You need to use electricity.", 
                         transitions: { electrolysis: "split" }, 
-                        logs: { electrolysis: "Passed an electric current through the molten ore. The compound broke down!" },
+                        logs: { electrolysis: "Passed an electric current through the molten ore. Check the lab panel: the compound has successfully split into a molten metal and a gas!" },
                         splitProducts: ["Al_molten", "O2_gas"] 
                     }
                 }
@@ -623,7 +641,10 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
                         app: "Reddish-brown ore", color: "#8a3324", type: "beaker", physState: "solid", 
                         hint: "This metal has medium reactivity. It can be reduced by a common, cheap non-metal.", 
                         transitions: { heat_carbon: "split" }, 
-                        logs: { heat_carbon: "Heated strongly with carbon. A displacement reaction occurred, extracting the metal!" },
+                        logs: { 
+                            heat_carbon: "Heated strongly with carbon. A displacement reaction occurred, extracting the metal!",
+                            electrolysis: "While electrolysis technically works, it requires massive amounts of electricity and is far too expensive! This metal's reactivity is low enough that a cheaper extraction method can be used. Try something else."
+                        },
                         splitProducts: ["Fe_solid", "CO2_gas"] 
                     }
                 }
@@ -645,7 +666,10 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
                         app: "Black powder", color: "#222222", type: "beaker", physState: "solid", 
                         hint: "This black powder requires heating with a reducing agent like charcoal (carbon).", 
                         transitions: { heat_carbon: "split" }, 
-                        logs: { heat_carbon: "Heated strongly with carbon. The black powder turned into a reddish-brown metal!" },
+                        logs: { 
+                            heat_carbon: "Heated strongly with carbon. The black powder turned into a reddish-brown metal!" ,
+                            electrolysis: "While electrolysis technically works, it requires massive amounts of electricity and is far too expensive! This metal's reactivity is low enough that a cheaper extraction method can be used. Try something else."
+                        },
                         splitProducts: ["Cu_solid", "CO2_gas"] 
                     }
                 }
@@ -700,28 +724,59 @@ button:hover { background-color: #45475a; transform: translateY(-2px); }
                 fact: "Potassium is the most reactive metal on the series.", parallels: "Like Sodium, it requires electrolysis of its molten ore.",
                 clue: "A flame test on this compound would produce a distinctive lilac (pale purple) flame.", followUp: "What color flame does Potassium produce?", followUpFeedback: "Lilac!",
                 quiz: [{ q: "What flame color indicates Potassium?", options: ["Yellow", "Lilac", "Brick-red"], correct: 1 }],
-                states: { "solid": { app: "White crystalline solid", color: "#ffffff", type: "beaker", physState: "solid", hint: "Top of the reactivity series. Needs electricity.", transitions: { electrolysis: "split" }, logs: { electrolysis: "Electrolysis successful." }, splitProducts: ["K_molten", "O2_gas"] } }
+                states: { 
+                    "solid": { 
+                        app: "White crystalline solid", color: "#ffffff", type: "beaker", physState: "solid", 
+                        hint: "Top of the reactivity series. Needs electricity.", 
+                        transitions: { electrolysis: "split" }, 
+                        logs: { electrolysis: "Passed an electric current through the molten ore. Check the lab panel: the compound has successfully split into a molten metal and a gas!" }, 
+                        splitProducts: ["K_molten", "Cl2_gas"] 
+                    } 
+                }
             },
             {
                 id: "1121", trueFormula: "NaCl", name: "Rock Salt (Sodium Chloride)", startState: "solid",
                 fact: "Sodium is highly reactive and must be stored under oil.", parallels: "Extracted via Down's Cell electrolysis.",
                 clue: "A flame test on this salt yields a bright yellow flame.", followUp: "What color flame does Sodium produce?", followUpFeedback: "Yellow!",
                 quiz: [{ q: "Which extraction method is used for Sodium?", options: ["Electrolysis", "Heating with Carbon"], correct: 0 }],
-                states: { "solid": { app: "White cubic crystals", color: "#f8f8ff", type: "beaker", physState: "solid", hint: "This metal produces a yellow flame.", transitions: { electrolysis: "split" }, logs: { electrolysis: "Electrolysis successful." }, splitProducts: ["Na_molten", "O2_gas"] } }
+                states: { 
+                    "solid": { 
+                        app: "White cubic crystals", color: "#f8f8ff", type: "beaker", physState: "solid", 
+                        hint: "This metal produces a yellow flame.", 
+                        transitions: { electrolysis: "split" }, 
+                        logs: { electrolysis: "Passed an electric current through the molten ore. Check the lab panel: the compound has successfully split into a molten metal and a gas!" }, 
+                        splitProducts: ["Na_molten", "Cl2_gas"] 
+                    } 
+                }
             },
             {
                 id: "1112", trueFormula: "CaCO3", name: "Limestone (Calcium Carbonate)", startState: "solid",
                 fact: "Calcium is an alkaline earth metal.", parallels: "Forms the basis of chalk and limestone.",
                 clue: "A flame test on this gives a brick-red flame.", followUp: "What color flame does Calcium produce?", followUpFeedback: "Brick-red!",
                 quiz: [{ q: "What flame color indicates Calcium?", options: ["Lilac", "Green", "Brick-red"], correct: 2 }],
-                states: { "solid": { app: "Chalky white rock", color: "#fffdd0", type: "beaker", physState: "solid", hint: "Produces a brick-red flame.", transitions: { electrolysis: "split" }, logs: { electrolysis: "Electrolysis successful." }, splitProducts: ["Ca_molten", "CO2_gas"] } }
+                states: { 
+                    "solid": { app: "Chalky white rock", color: "#fffdd0", type: "beaker", physState: "solid", 
+                              hint: "Produces a brick-red flame.", 
+                              transitions: { electrolysis: "split" }, 
+                              logs: { electrolysis: "Passed an electric current through the molten ore. Check the lab panel: the compound has successfully split into a molten metal and a gas!" }, 
+                              splitProducts: ["Ca_molten", "CO2_gas"] 
+                             } 
+                }
             },
             {
                 id: "1122", trueFormula: "MgO", name: "Magnesia (Magnesium Oxide)", startState: "solid",
                 fact: "Magnesium burns in air with a blinding white light.", parallels: "Used in flares and fireworks.",
                 clue: "When burned, the pure metal of this ore emits a blinding white light.", followUp: "What happens when Magnesium burns?", followUpFeedback: "Blinding white light!",
                 quiz: [{ q: "Where does Magnesium sit compared to Carbon?", options: ["Above Carbon", "Below Carbon"], correct: 0 }],
-                states: { "solid": { app: "White powder", color: "#f0fff0", type: "beaker", physState: "solid", hint: "The metal burns blindingly white.", transitions: { electrolysis: "split" }, logs: { electrolysis: "Electrolysis successful." }, splitProducts: ["Mg_molten", "O2_gas"] } }
+                states: { 
+                    "solid": { 
+                        app: "White powder", color: "#f0fff0", type: "beaker", physState: "solid", 
+                        hint: "The metal burns blindingly white.", 
+                        transitions: { electrolysis: "split" }, 
+                        logs: { electrolysis: "Passed an electric current through the molten ore. Check the lab panel: the compound has successfully split into a molten metal and a gas!" }, 
+                        splitProducts: ["Mg_molten", "O2_gas"] 
+                    } 
+                }
             },
             {
                 id: "1211", trueFormula: "ZnO", name: "Zincite (Zinc Oxide)", startState: "solid",
